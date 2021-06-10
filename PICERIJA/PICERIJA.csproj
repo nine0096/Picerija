@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96029800-5574-40E6-9731-5DDFE09E21BB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PICERIJA</RootNamespace>
+    <AssemblyName>PICERIJA</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=3.1.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.3.1.0\lib\net461\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.5.3.3\lib\net461\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.11.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq.EagerFetching, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.EagerFetching.2.2.0\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataLayer.cs" />
+    <Compile Include="DTOManager.cs" />
+    <Compile Include="DTOs.cs" />
+    <Compile Include="Entiteti\DostavnoVozilo.cs" />
+    <Compile Include="Entiteti\Kupac.cs" />
+    <Compile Include="Entiteti\KupacSaBonusom.cs" />
+    <Compile Include="Entiteti\Osoba.cs" />
+    <Compile Include="Entiteti\Pica.cs" />
+    <Compile Include="Entiteti\PicaDodaci.cs" />
+    <Compile Include="Entiteti\Poklon.cs" />
+    <Compile Include="Entiteti\PorucenaPica.cs" />
+    <Compile Include="Entiteti\Porudzbina.cs" />
+    <Compile Include="Entiteti\Raspored.cs" />
+    <Compile Include="Entiteti\Zaposleni.cs" />
+    <Compile Include="Entiteti\ZaposleniEmail.cs" />
+    <Compile Include="Entiteti\ZaposleniJezici.cs" />
+    <Compile Include="Entiteti\ZaposleniNivoiJezika.cs" />
+    <Compile Include="Entiteti\ZaposleniTelefon.cs" />
+    <Compile Include="FolderForme\Automobil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\Automobil.Designer.cs">
+      <DependentUpon>Automobil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\Bicikl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\Bicikl.Designer.cs">
+      <DependentUpon>Bicikl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\DodajAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\DodajAuto.Designer.cs">
+      <DependentUpon>DodajAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\DodajBicikl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\DodajBicikl.Designer.cs">
+      <DependentUpon>DodajBicikl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\DodajSkuter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\DodajSkuter.Designer.cs">
+      <DependentUpon>DodajSkuter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\DodajZaposlenog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\DodajZaposlenog.Designer.cs">
+      <DependentUpon>DodajZaposlenog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\IzmeniAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\IzmeniAuto.Designer.cs">
+      <DependentUpon>IzmeniAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\IzmeniBicikl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\IzmeniBicikl.Designer.cs">
+      <DependentUpon>IzmeniBicikl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\IzmeniPorudzbinu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\IzmeniPorudzbinu.Designer.cs">
+      <DependentUpon>IzmeniPorudzbinu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\IzmeniSkuter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\IzmeniSkuter.Designer.cs">
+      <DependentUpon>IzmeniSkuter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\IzmeniZaposlenog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\IzmeniZaposlenog.Designer.cs">
+      <DependentUpon>IzmeniZaposlenog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\Kupci.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\Kupci.Designer.cs">
+      <DependentUpon>Kupci.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\Pice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\Pice.Designer.cs">
+      <DependentUpon>Pice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\Pokloni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\Pokloni.Designer.cs">
+      <DependentUpon>Pokloni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\PorucenePice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\PorucenePice.Designer.cs">
+      <DependentUpon>PorucenePice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\Porudzbine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\Porudzbine.Designer.cs">
+      <DependentUpon>Porudzbine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\PrvaStranica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\PrvaStranica.Designer.cs">
+      <DependentUpon>PrvaStranica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\Skuteri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\Skuteri.Designer.cs">
+      <DependentUpon>Skuteri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\Vozila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\Vozila.Designer.cs">
+      <DependentUpon>Vozila.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderForme\Zaposleni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderForme\Zaposleni.Designer.cs">
+      <DependentUpon>Zaposleni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mapiranja\DostavnoVoziloMapiranja.cs" />
+    <Compile Include="Mapiranja\KupacMapiranja.cs" />
+    <Compile Include="Mapiranja\KupacSaBonusomMapiranja.cs" />
+    <Compile Include="Mapiranja\OsobaMapiranja.cs" />
+    <Compile Include="Mapiranja\PicaDodaciMapiranja.cs" />
+    <Compile Include="Mapiranja\PicaMapiranja.cs" />
+    <Compile Include="Mapiranja\PoklonMapiranja.cs" />
+    <Compile Include="Mapiranja\PorucenaPicaMapiranja.cs" />
+    <Compile Include="Mapiranja\PorudzbinaMapiranja.cs" />
+    <Compile Include="Mapiranja\RasporedMapiranja.cs" />
+    <Compile Include="Mapiranja\ZaposleniEmailMapiranja.cs" />
+    <Compile Include="Mapiranja\ZaposleniJeziciMapiranja.cs" />
+    <Compile Include="Mapiranja\ZaposleniMapiranja.cs" />
+    <Compile Include="Mapiranja\ZaposleniNivoiJezikaMapiranja.cs" />
+    <Compile Include="Mapiranja\ZaposleniTelefonMapiranja.cs" />
+    <Compile Include="PocetnaStranica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PocetnaStranica.Designer.cs">
+      <DependentUpon>PocetnaStranica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FolderForme\Automobil.resx">
+      <DependentUpon>Automobil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\Bicikl.resx">
+      <DependentUpon>Bicikl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\DodajAuto.resx">
+      <DependentUpon>DodajAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\DodajBicikl.resx">
+      <DependentUpon>DodajBicikl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\DodajSkuter.resx">
+      <DependentUpon>DodajSkuter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\DodajZaposlenog.resx">
+      <DependentUpon>DodajZaposlenog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\IzmeniAuto.resx">
+      <DependentUpon>IzmeniAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\IzmeniBicikl.resx">
+      <DependentUpon>IzmeniBicikl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\IzmeniPorudzbinu.resx">
+      <DependentUpon>IzmeniPorudzbinu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\IzmeniSkuter.resx">
+      <DependentUpon>IzmeniSkuter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\IzmeniZaposlenog.resx">
+      <DependentUpon>IzmeniZaposlenog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\Kupci.resx">
+      <DependentUpon>Kupci.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\Pice.resx">
+      <DependentUpon>Pice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\Pokloni.resx">
+      <DependentUpon>Pokloni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\PorucenePice.resx">
+      <DependentUpon>PorucenePice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\Porudzbine.resx">
+      <DependentUpon>Porudzbine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\PrvaStranica.resx">
+      <DependentUpon>PrvaStranica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\Skuteri.resx">
+      <DependentUpon>Skuteri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\Vozila.resx">
+      <DependentUpon>Vozila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FolderForme\Zaposleni.resx">
+      <DependentUpon>Zaposleni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PocetnaStranica.resx">
+      <DependentUpon>PocetnaStranica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
