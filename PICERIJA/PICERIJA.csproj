@@ -75,7 +75,6 @@
     <Compile Include="DTOs.cs" />
     <Compile Include="Entiteti\DostavnoVozilo.cs" />
     <Compile Include="Entiteti\Kupac.cs" />
-    <Compile Include="Entiteti\KupacSaBonusom.cs" />
     <Compile Include="Entiteti\Osoba.cs" />
     <Compile Include="Entiteti\Pica.cs" />
     <Compile Include="Entiteti\PicaDodaci.cs" />
@@ -216,7 +215,6 @@
     </Compile>
     <Compile Include="Mapiranja\DostavnoVoziloMapiranja.cs" />
     <Compile Include="Mapiranja\KupacMapiranja.cs" />
-    <Compile Include="Mapiranja\KupacSaBonusomMapiranja.cs" />
     <Compile Include="Mapiranja\OsobaMapiranja.cs" />
     <Compile Include="Mapiranja\PicaDodaciMapiranja.cs" />
     <Compile Include="Mapiranja\PicaMapiranja.cs" />

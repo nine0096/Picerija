@@ -43,7 +43,7 @@ namespace PICERIJA.FolderForme
 
             foreach (KupacPregled p in listaKupaca)
             {
-                ListViewItem item = new ListViewItem(new string[] { p.SifraKupac.ToString(), p.Ime, p.Prezime, p.Ulica, p.Broj.ToString(), p.Grad, p.Drzava, p.Email, p.BrojTelefona.ToString() });
+                ListViewItem item = new ListViewItem(new string[] { p.Sifra.ToString(), p.Ime, p.Prezime, p.Ulica, p.Broj.ToString(), p.Grad, p.Drzava, p.Email, p.BrojTelefona.ToString(), p.TipKupca, p.SakupljeniBodovi.ToString(), p.DatumPrvePorudzbine.ToString() });
                 this.listaKupci.Items.Add(item);
 
             }

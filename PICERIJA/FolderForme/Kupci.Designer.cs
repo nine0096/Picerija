@@ -44,6 +44,9 @@ namespace PICERIJA.FolderForme
             this.btnPokloni = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +72,10 @@ namespace PICERIJA.FolderForme
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader8,
-            this.columnHeader9});
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader12});
             this.listaKupci.FullRowSelect = true;
             this.listaKupci.GridLines = true;
             this.listaKupci.HideSelection = false;
@@ -171,6 +177,20 @@ namespace PICERIJA.FolderForme
             this.label2.TabIndex = 4;
             this.label2.Text = "Obrisi kupca:";
             // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Tip kupca";
+            this.columnHeader10.Width = 118;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Bodovi";
+            this.columnHeader11.Width = 80;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Prva porudzbina";
+            // 
             // Kupci
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -207,5 +227,8 @@ namespace PICERIJA.FolderForme
         private System.Windows.Forms.Button btnPokloni;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
     }
 }

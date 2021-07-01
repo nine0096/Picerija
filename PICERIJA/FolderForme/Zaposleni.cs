@@ -19,8 +19,20 @@ namespace PICERIJA.FolderForme
 
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
-            IzmeniZaposlenog forma = new IzmeniZaposlenog();
-            forma.ShowDialog();
+
+            if (listaZaposleni.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Izaberite zaposlenog cije podatke zelite da izmenite!");
+                return;
+            }
+
+            int idB = Int32.Parse(listaZaposleni.SelectedItems[0].SubItems[0].Text);
+            ZaposleniBasic ob = DTOManager.vratiZaposlenog(idB);
+
+            IzmeniZaposlenog formaUpdate = new IzmeniZaposlenog(ob);
+            formaUpdate.ShowDialog();
+
+            this.popuniPodacima();
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
@@ -33,12 +45,12 @@ namespace PICERIJA.FolderForme
         {
             if (listaZaposleni.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Izaberite zaposlenog kog zelite da obrisete!");
+                MessageBox.Show("Izaberite radnika kog zelite da obrisete!");
                 return;
             }
 
             int idZ = Int32.Parse(listaZaposleni.SelectedItems[0].SubItems[0].Text);
-            string poruka = "Obrisati zaposlenog?";
+            string poruka = "Obrisati radnika?";
             string title = "Pitanje";
             MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
             DialogResult result = MessageBox.Show(poruka, title, buttons);
@@ -46,7 +58,7 @@ namespace PICERIJA.FolderForme
             if (result == DialogResult.OK)
             {
                 DTOManager.obrisiZaposlenogIzSistema(idZ);
-                MessageBox.Show("Brisanje vozila je uspesno obavljeno!");
+                MessageBox.Show("Brisanje radnika je uspesno obavljeno!");
                 this.popuniPodacima();
             }
             else
@@ -75,7 +87,7 @@ namespace PICERIJA.FolderForme
 
             foreach (ZaposleniPregled p in listaRadnika)
             {
-                ListViewItem item = new ListViewItem(new string[] { p.SifraZaposleni.ToString(), p.Ime, p.Prezime, p.Ulica, p.Broj.ToString(), p.Grad, p.Drzava, p.Jmbg.ToString(), p.DatumRodjenja.ToString(), p.TipZaposlenog, p.Vozacka });
+                ListViewItem item = new ListViewItem(new string[] { p.Sifra.ToString(), p.Ime, p.Prezime, p.Ulica, p.Broj.ToString(), p.Grad, p.Drzava, p.Jmbg.ToString(), p.DatumRodjenja.ToString(), p.TipZaposlenog, p.Vozacka });
                 this.listaZaposleni.Items.Add(item);
 
             }

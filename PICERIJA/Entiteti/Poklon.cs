@@ -14,7 +14,7 @@ namespace PICERIJA.Entiteti
         public virtual string Tip { get; set; }
         public virtual int BrojBodova { get; set; }
 
-        public virtual KupacSaBonusom PripadaKupcu { get; set; }
+        public virtual Kupac PripadaKupcu { get; set; }
 
         public Poklon()
         {

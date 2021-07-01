@@ -657,7 +657,7 @@ namespace PICERIJA
         }
 
 
-        public static ZaposleniBasic vratiZapposlenog(int id)
+        public static ZaposleniBasic vratiZaposlenog(int id)
         {
             ZaposleniBasic a = new ZaposleniBasic();
             try
@@ -666,7 +666,7 @@ namespace PICERIJA
 
                 Zaposleni radnik = s.Load<Zaposleni>(id);
 
-                a.SifraZaposleni = radnik.Sifra;
+                a.Sifra = radnik.Sifra;
                 a.Ime = radnik.Ime;
                 a.Prezime = radnik.Prezime;
                 a.Ulica = radnik.Ulica;
@@ -697,7 +697,7 @@ namespace PICERIJA
             {
                 ISession s = DataLayer.GetSession();
 
-                PICERIJA.Entiteti.Zaposleni a = s.Load<Zaposleni>(radnik.SifraZaposleni);
+                PICERIJA.Entiteti.Zaposleni a = s.Load<Zaposleni>(radnik.Sifra);
 
 
                 a.Ime = radnik.Ime;
@@ -894,6 +894,9 @@ namespace PICERIJA
                 o.Drzava = p.Drzava;
                 o.Email = p.Email;
                 o.BrojTelefona = p.BrojTelefona;
+                o.TipKupca = p.TipKupca;
+                o.SakupljeniBodovi = p.SakupljeniBodovi;
+                o.DatumPrvePorudzbine = p.DatumPrvePorudzbine;
 
                 s.SaveOrUpdate(o);
 
@@ -917,7 +920,7 @@ namespace PICERIJA
 
                 Kupac kupac = s.Load<Kupac>(id);
 
-                a.SifraKupac = kupac.Sifra; ;
+                a.Sifra = kupac.Sifra; ;
                 a.Ime = kupac.Ime;
                 a.Prezime = kupac.Prezime;
                 a.Ulica = kupac.Ulica;
@@ -926,6 +929,9 @@ namespace PICERIJA
                 a.Drzava = kupac.Drzava;
                 a.Email = kupac.Email;
                 a.BrojTelefona = kupac.BrojTelefona;
+                a.TipKupca = kupac.TipKupca;
+                a.SakupljeniBodovi = kupac.SakupljeniBodovi;
+                a.DatumPrvePorudzbine = kupac.DatumPrvePorudzbine;
 
 
                 s.Close();
@@ -946,7 +952,7 @@ namespace PICERIJA
             {
                 ISession s = DataLayer.GetSession();
 
-                PICERIJA.Entiteti.Kupac a = s.Load<Kupac>(kupac.SifraKupac);
+                PICERIJA.Entiteti.Kupac a = s.Load<Kupac>(kupac.Sifra);
 
 
                 a.Ime = kupac.Ime;
@@ -957,6 +963,9 @@ namespace PICERIJA
                 a.Drzava = kupac.Drzava;
                 a.Email = kupac.Email;
                 a.BrojTelefona = kupac.BrojTelefona;
+                a.TipKupca = kupac.TipKupca;
+                a.SakupljeniBodovi = kupac.SakupljeniBodovi;
+                a.DatumPrvePorudzbine = kupac.DatumPrvePorudzbine;
 
 
                 s.SaveOrUpdate(a);
@@ -987,6 +996,10 @@ namespace PICERIJA
                 a.Drzava = kupac.Drzava;
                 a.Email = kupac.Email;
                 a.BrojTelefona = kupac.BrojTelefona;
+                a.TipKupca = kupac.TipKupca;
+                a.SakupljeniBodovi = kupac.SakupljeniBodovi;
+                a.DatumPrvePorudzbine = kupac.DatumPrvePorudzbine;
+
 
 
                 s.Save(a);
@@ -1014,7 +1027,7 @@ namespace PICERIJA
 
                 foreach (PICERIJA.Entiteti.Kupac a in sviKupci)
                 {
-                    kupci.Add(new KupacPregled(a.Sifra, a.Ime, a.Prezime, a.Ulica, a.Broj, a.Grad, a.Drzava, a.Email, a.BrojTelefona));
+                    kupci.Add(new KupacPregled(a.Sifra, a.Ime, a.Prezime, a.Ulica, a.Broj, a.Grad, a.Drzava, a.Email, a.BrojTelefona, a.TipKupca, a.SakupljeniBodovi, a.DatumPrvePorudzbine));
                 }
 
                 s.Close();
@@ -1047,202 +1060,6 @@ namespace PICERIJA
 
         #endregion
 
-        #region KupacSaBonusom
-
-        public static void obrisiBonusKupca(int id)
-        {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-
-                KupacSaBonusom kupac = s.Load<KupacSaBonusom>(id);
-
-                s.Delete(kupac);
-                s.Flush();
-                s.Close();
-
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-
-        }
-
-        public static void dodajBonusKupca(KupacSaBonusomBasic p)
-        {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-
-                PICERIJA.Entiteti.KupacSaBonusom o = new PICERIJA.Entiteti.KupacSaBonusom();
-
-                o.Ime = p.Ime;
-                o.Prezime = p.Prezime;
-                o.Ulica = p.Ulica;
-                o.Broj = p.Broj;
-                o.Grad = p.Grad;
-                o.Drzava = p.Drzava;
-                o.Email = p.Email;
-                o.BrojTelefona = p.BrojTelefona;
-                o.SakupljeniBodovi = p.SakupljeniBodovi;
-                o.DatumPrvePorudzbine = p.DatumPrvePorudzbine;
-
-                s.SaveOrUpdate(o);
-
-                s.Flush();
-
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-        }
-
-
-        public static KupacSaBonusomBasic vratiBonusKupca(int id)
-        {
-            KupacSaBonusomBasic a = new KupacSaBonusomBasic();
-            try
-            {
-                ISession s = DataLayer.GetSession();
-
-                KupacSaBonusom kupac = s.Load<KupacSaBonusom>(id);
-
-                a.SifraKupac = kupac.Sifra; ;
-                a.Ime = kupac.Ime;
-                a.Prezime = kupac.Prezime;
-                a.Ulica = kupac.Ulica;
-                a.Broj = kupac.Broj;
-                a.Grad = kupac.Grad;
-                a.Drzava = kupac.Drzava;
-                a.Email = kupac.Email;
-                a.BrojTelefona = kupac.BrojTelefona;
-                a.SakupljeniBodovi = kupac.SakupljeniBodovi;
-                a.DatumPrvePorudzbine = kupac.DatumPrvePorudzbine;
-
-
-                s.Close();
-
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-
-            return a;
-
-        }
-
-        public static void izmeniBonusKupca(KupacSaBonusomBasic kupac)
-        {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-
-                PICERIJA.Entiteti.KupacSaBonusom a = s.Load<KupacSaBonusom>(kupac.SifraKupac);
-
-
-                a.Ime = kupac.Ime;
-                a.Prezime = kupac.Prezime;
-                a.Ulica = kupac.Ulica;
-                a.Broj = kupac.Broj;
-                a.Grad = kupac.Grad;
-                a.Drzava = kupac.Drzava;
-                a.Email = kupac.Email;
-                a.BrojTelefona = kupac.BrojTelefona;
-                a.SakupljeniBodovi = kupac.SakupljeniBodovi;
-                a.DatumPrvePorudzbine = kupac.DatumPrvePorudzbine;
-
-                s.SaveOrUpdate(a);
-
-                s.Flush();
-
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-        }
-
-        public static void sacuvajBonusKupcaKupca(KupacSaBonusomBasic kupac)
-        {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-
-                PICERIJA.Entiteti.KupacSaBonusom a = new PICERIJA.Entiteti.KupacSaBonusom();
-
-                a.Ime = kupac.Ime;
-                a.Prezime = kupac.Prezime;
-                a.Ulica = kupac.Ulica;
-                a.Broj = kupac.Broj;
-                a.Grad = kupac.Grad;
-                a.Drzava = kupac.Drzava;
-                a.Email = kupac.Email;
-                a.BrojTelefona = kupac.BrojTelefona;
-                a.SakupljeniBodovi = kupac.SakupljeniBodovi;
-                a.DatumPrvePorudzbine = kupac.DatumPrvePorudzbine;
-
-                s.Save(a);
-
-                s.Flush();
-
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-        }
-
-
-        public static List<KupacSaBonusomPregled> vratiSveBonusKupce()
-        {
-            List<KupacSaBonusomPregled> kupci = new List<KupacSaBonusomPregled>();
-            try
-            {
-                ISession s = DataLayer.GetSession();
-
-                IEnumerable<PICERIJA.Entiteti.KupacSaBonusom> sviKupci = from o in s.Query<PICERIJA.Entiteti.KupacSaBonusom>()
-                                                                         select o;
-
-                foreach (PICERIJA.Entiteti.KupacSaBonusom a in sviKupci)
-                {
-                    kupci.Add(new KupacSaBonusomPregled(a.Sifra, a.Ime, a.Prezime, a.Ulica, a.Broj, a.Grad, a.Drzava, a.Email, a.BrojTelefona, a.SakupljeniBodovi, a.DatumPrvePorudzbine));
-                }
-
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-
-            return kupci;
-        }
-
-        public static void obrisiBonusKupcaIzSistema(int id)
-        {
-            try
-            {
-                ISession s = DataLayer.GetSession();
-
-                PICERIJA.Entiteti.KupacSaBonusom a = s.Load<PICERIJA.Entiteti.KupacSaBonusom>(id);
-                s.Delete(a);
-                s.Flush();
-
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show(ec.Message);
-            }
-        }
-
-        #endregion
 
         #region Poklon
 

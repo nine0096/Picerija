@@ -31,28 +31,25 @@ namespace PICERIJA.FolderForme
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            string poruka = "Da li zelite da izvrsite izmene vozila?";
-            string title = "Pitanje";
-            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-            DialogResult result = MessageBox.Show(poruka, title, buttons);
-            if (result == DialogResult.OK)
-            {
-                this.zaposleni.Ime = txbIme.Text;
-                this.zaposleni.Prezime = txbPrezime.Text;
-                this.zaposleni.Ulica = txbUlica.Text;
-                this.zaposleni.Broj = Int32.Parse(txbBroj.Text);
-                this.zaposleni.Grad = txbGrad.Text;
-                this.zaposleni.DatumRodjenja = dtDatum.Value;
+            ZaposleniBasic radnik = new ZaposleniBasic();
 
+            radnik.Ime = txbIme.Text;
+            radnik.Prezime = txbPrezime.Text;
+            radnik.Ulica = txbUlica.Text;
+            radnik.Broj = Int32.Parse(txbBroj.Text);
+            radnik.Grad = txbGrad.Text;
+            radnik.Drzava = txbDrzava.Text;
+            radnik.Jmbg = Int32.Parse(txbJMBG.Text);
+            radnik.DatumRodjenja = dDatum.Value;
+            radnik.TipZaposlenog = txbTip.Text;
+            radnik.Vozacka = txbVozacka.Text;
 
-                DTOManager.izmeniZaposlenog(this.zaposleni);
-                MessageBox.Show("Azuriranje vozila je uspesno izvrseno!");
-                this.Close();
-            }
-            else
-            {
+            DTOManager.dodajZaposlenog(radnik);
 
-            }
+            MessageBox.Show("Uspesno ste dodali novog radnika!");
+            //this.Close();
+            PrvaStranica forma = new PrvaStranica();
+            forma.ShowDialog();
         }
     }
 }

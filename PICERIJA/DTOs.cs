@@ -159,15 +159,15 @@ namespace PICERIJA
 
     #region Zaposleni
 
-        public class ZaposleniBasic
+        public class ZaposleniBasic : OsobaBasic
     {
-        public  int SifraZaposleni { get; set; }
-        public  string Ime { get; set; }
-        public  string Prezime { get; set; }
-        public  string Ulica { get; set; }
-        public  int Broj { get; set; }
-        public  string Grad { get; set; }
-        public  string Drzava { get; set; }
+        ///public  int SifraZaposleni { get; set; }
+        //public  string Ime { get; set; }
+        //public  string Prezime { get; set; }
+       // public  string Ulica { get; set; }
+       // public  int Broj { get; set; }
+       // public  string Grad { get; set; }
+       // public  string Drzava { get; set; }
         public long Jmbg { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public string TipZaposlenog { get; set; }
@@ -181,9 +181,9 @@ namespace PICERIJA
 
         }
 
-        public ZaposleniBasic(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava, long jmbg, DateTime datum, string tip, string vozacka)
+        public ZaposleniBasic(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava, long jmbg, DateTime datum, string tip, string vozacka): base(id,ime,prezime,ulica,broj,grad,drzava)
         {
-            this.SifraZaposleni = id;
+            this.Sifra = id;
             this.Ime = ime;
             this.Prezime = prezime;
             this.Ulica = ulica;
@@ -197,15 +197,15 @@ namespace PICERIJA
         }
     }
 
-    public class ZaposleniPregled
+    public class ZaposleniPregled : OsobaPregled
     {
-        public int SifraZaposleni { get; set; }
-        public string Ime { get; set; }
-        public string Prezime { get; set; }
-        public string Ulica { get; set; }
-        public int Broj { get; set; }
-        public string Grad { get; set; }
-        public string Drzava { get; set; }
+       // public int SifraZaposleni { get; set; }
+       // public string Ime { get; set; }
+       //public string Prezime { get; set; }
+       //public string Ulica { get; set; }
+       // public int Broj { get; set; }
+       // public string Grad { get; set; }
+       // public string Drzava { get; set; }
         public long Jmbg { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public string TipZaposlenog { get; set; }
@@ -216,9 +216,9 @@ namespace PICERIJA
 
         }
 
-        public ZaposleniPregled(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava, long jmbg, DateTime datum, string tip, string vozacka)
+        public ZaposleniPregled(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava, long jmbg, DateTime datum, string tip, string vozacka): base(id,ime,prezime,ulica,broj,grad,drzava)
         {
-            this.SifraZaposleni = id;
+            this.Sifra = id;
             this.Ime = ime;
             this.Prezime = prezime;
             this.Ulica = ulica;
@@ -334,17 +334,20 @@ namespace PICERIJA
 
     #region Kupac
 
-    public class KupacBasic
+    public class KupacBasic : OsobaBasic
     {
-        public int SifraKupac { get; set; }
-        public string Ime { get; set; }
-        public string Prezime { get; set; }
-        public string Ulica { get; set; }
-        public int Broj { get; set; }
-        public string Grad { get; set; }
-        public string Drzava { get; set; }
+       // public int SifraKupac { get; set; }
+       // public string Ime { get; set; }
+       // public string Prezime { get; set; }
+       // public string Ulica { get; set; }
+      //  public int Broj { get; set; }
+      //  public string Grad { get; set; }
+       //   public string Drzava { get; set; }
         public  string Email { get; set; }
         public int BrojTelefona { get; set; }
+        public string TipKupca { get; set; }
+        public int SakupljeniBodovi { get; set; }
+        public DateTime DatumPrvePorudzbine { get; set; }
         //public int BrojPorudzbina { get; set; }
 
         public KupacBasic()
@@ -352,9 +355,9 @@ namespace PICERIJA
 
         }
 
-        public KupacBasic(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava, string email, int tel)
+        public KupacBasic(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava, string email, int tel, string tipk, int bodovi, DateTime prva): base(id,ime,prezime,ulica,broj,grad,drzava)
         {
-            this.SifraKupac = id;
+            this.Sifra = id;
             this.Ime = ime;
             this.Prezime = prezime;
             this.Ulica = ulica;
@@ -363,32 +366,38 @@ namespace PICERIJA
             this.Drzava = drzava;
             this.Email = email;
             this.BrojTelefona = tel;
+            this.TipKupca = tipk;
+            this.SakupljeniBodovi = bodovi;
+            this.DatumPrvePorudzbine = prva;
 
         }
 
     }
 
-    public class KupacPregled
+    public class KupacPregled : OsobaPregled
     {
-        public int SifraKupac { get; set; }
-        public string Ime { get; set; }
-        public string Prezime { get; set; }
-        public string Ulica { get; set; }
-        public int Broj { get; set; }
-        public string Grad { get; set; }
-        public string Drzava { get; set; }
+       // public int SifraKupac { get; set; }
+       // public string Ime { get; set; }
+       // public string Prezime { get; set; }
+      //  public string Ulica { get; set; }
+      //  public int Broj { get; set; }
+      //  public string Grad { get; set; }
+      //  public string Drzava { get; set; }
         public string Email { get; set; }
         public int BrojTelefona { get; set; }
-        
+        public string TipKupca { get; set; }
+        public int SakupljeniBodovi { get; set; }
+        public DateTime DatumPrvePorudzbine { get; set; }
+
 
         public KupacPregled()
         {
 
         }
 
-        public KupacPregled(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava, string email, int tel)
+        public KupacPregled(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava, string email, int tel, string tipk, int bodovi, DateTime prva) : base(id,ime,prezime,ulica,broj,grad,drzava)
         {
-            this.SifraKupac = id;
+            this.Sifra = id;
             this.Ime = ime;
             this.Prezime = prezime;
             this.Ulica = ulica;
@@ -397,9 +406,14 @@ namespace PICERIJA
             this.Drzava = drzava;
             this.Email = email;
             this.BrojTelefona = tel;
+            this.TipKupca = tipk;
+            this.SakupljeniBodovi = bodovi;
+            this.DatumPrvePorudzbine = prva;
 
         }
     }
+
+
     #endregion
 
     #region Porudzbina
@@ -458,46 +472,6 @@ namespace PICERIJA
             this.Kes = kes;
         }
     }
-    #endregion
-
-    #region KupacSaBonusom
-
-    public class KupacSaBonusomBasic : KupacBasic
-    {
-        public int SakupljeniBodovi { get; set; }
-        public DateTime DatumPrvePorudzbine { get; set; }
-       // public int BrojPoklona { get; set; }
-
-        public KupacSaBonusomBasic()
-        {
-
-        }
-
-        public KupacSaBonusomBasic(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava, string email, int tel, int bodovi,DateTime prva): base(id, ime, prezime, ulica, broj, grad, drzava, email, tel)
-        {
-            this.SakupljeniBodovi = bodovi;
-            this.DatumPrvePorudzbine = prva;
-        }
-    }
-
-    public class KupacSaBonusomPregled : KupacPregled
-    {
-        public int SakupljeniBodovi { get; set; }
-        public DateTime DatumPrvePorudzbine { get; set; }
-       
-
-        public KupacSaBonusomPregled()
-        {
-
-        }
-
-        public KupacSaBonusomPregled(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava, string email, int tel, int bodovi, DateTime prva) : base(id, ime, prezime, ulica, broj, grad, drzava, email, tel)
-        {
-            this.SakupljeniBodovi = bodovi;
-            this.DatumPrvePorudzbine = prva;
-        }
-    }
-
     #endregion
 
     #region PorucenaPica
@@ -590,5 +564,70 @@ namespace PICERIJA
 
     #endregion
 
-    
+    #region Osoba
+    public abstract class OsobaBasic
+    {
+        public int Sifra { get; set; }
+        public string Ime { get; set; }
+        public string Prezime { get; set; }
+        public string Ulica { get; set; }
+        public int Broj { get; set; }
+        public string Grad { get; set; }
+        public string Drzava { get; set; }
+       
+
+
+        public OsobaBasic()
+        {
+
+        }
+
+        public OsobaBasic(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava)
+        {
+            this.Sifra = id;
+            this.Ime = ime;
+            this.Prezime = prezime;
+            this.Ulica = ulica;
+            this.Broj = broj;
+            this.Grad = grad;
+            this.Drzava = drzava;
+           
+
+        }
+    }
+
+    public abstract class OsobaPregled
+    {
+        public int Sifra { get; set; }
+        public string Ime { get; set; }
+        public string Prezime { get; set; }
+        public string Ulica { get; set; }
+        public int Broj { get; set; }
+        public string Grad { get; set; }
+        public string Drzava { get; set; }
+
+
+
+        public OsobaPregled()
+        {
+
+        }
+
+        public OsobaPregled(int id, string ime, string prezime, string ulica, int broj, string grad, string drzava)
+        {
+            this.Sifra = id;
+            this.Ime = ime;
+            this.Prezime = prezime;
+            this.Ulica = ulica;
+            this.Broj = broj;
+            this.Grad = grad;
+            this.Drzava = drzava;
+
+
+        }
+    }
+    #endregion
+
+
+
 }

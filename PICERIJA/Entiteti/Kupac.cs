@@ -10,12 +10,18 @@ namespace PICERIJA.Entiteti
     {
         public virtual string Email { get; set; }
         public virtual int BrojTelefona { get; set; }
+        public virtual string TipKupca { get; set; }
+        public virtual int SakupljeniBodovi { get; set; }
+        public virtual DateTime DatumPrvePorudzbine { get; set; }
 
         public virtual IList<Porudzbina> Porudzbine { get; set; }
+        public virtual IList<Poklon> Pokloni { get; set; }
 
         public Kupac()
         {
             Porudzbine = new List<Porudzbina>();
+
+            Pokloni = new List<Poklon>();
         }
     }
 }
